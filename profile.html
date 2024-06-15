@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Web Project</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>User Profile</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>User Profile Information</h2>
+            <?php
+                // PHP code to fetch user profile from database (sample)
+                include_once 'php/db_functions.php';
+                $profile = getUserProfile($_SESSION['username']); // Example function to retrieve user profile
+                if ($profile) {
+                    echo "<p>Username: " . $profile['username'] . "</p>";
+                    // Display additional admin feature (simulate for demonstration)
+                    if ($_SESSION['role'] === 'admin') {
+                        echo "<p>Admin Feature: ... (admin only functionality)</p>";
+                    }
+                } else {
+                    echo "<p>Error fetching user profile.</p>";
+                }
+            ?>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Web Project. All rights reserved.</p>
+    </footer>
+</body>
+</html>
